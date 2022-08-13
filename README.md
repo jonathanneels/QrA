@@ -1,4 +1,4 @@
-Do you know what function Augmented Reality needs?! <br>
+Do you know what Augmented Reality needs?! <br>
 A way to generate AR-website objects. So you can have 3D-like online chats, arcade fun, movies and streams on one spot and just walk away to let it "dissapear". 
 
 I believe this open-source addition opens up a whole new world for AR; you don't have to know 3D or the three.js framework to make beautiful ideas. <br>You only need to know how to make (or refer to) a website.
