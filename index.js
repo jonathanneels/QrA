@@ -28,9 +28,13 @@ var feedbackUrl = req.url;
         res.writeHead(200, {'Content-Type': 'text/html'});
                           fs.createReadStream('iframe.html').pipe(res);//  fs.createReadStream('default_arjs_test.html').pipe(res); 
     }
-else  if	(feedbackUrl.trim().startsWith('/iframe')  )   {
+	else  if	(feedbackUrl.trim().startsWith('/iframe')  )   {
 	   res.writeHead(200, {'Content-Type': 'text/html'});
               fs.createReadStream('iframe.html').pipe(res)
+	}
+else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
+	   res.writeHead(200, {'Content-Type': 'text/html'});
+              fs.createReadStream('VRiframe.html').pipe(res)
 	}
 	else if	(feedbackUrl.trim().startsWith('/qramaker') ) {
  	fs.readFile(__dirname + "/static/QrA_Maker/index.html", function (err,data) {     
