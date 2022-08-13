@@ -77,6 +77,12 @@ else  if	(feedbackUrl.trim().startsWith('/iframe')  ) {
     res.end(data);
   }); 
 	}
+	else if	(feedbackUrl.trim().startsWith('/vrqramaker') ) {
+ 	fs.readFile(__dirname + "/static/QrA_Maker/indexVR.html", function (err,data) {     
+    res.writeHead(200);
+    res.end(data);
+  }); 
+	}
   else{  
   fs.readFile(__dirname + feedbackUrl, function (err,data) {//REF:https://stackoverflow.com/questions/16333790/node-js-quick-file-server-static-files-over-http
     if (err) {
