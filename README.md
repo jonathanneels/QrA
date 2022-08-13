@@ -16,10 +16,10 @@ Surf to  HTTPS://127.0.0.1:4444 or  HTTPS://127.0.0.1:4444/iframe to the scanpag
 You can have an VR-AR experience if you go to  HTTPS://127.0.0.1:4444/vrframe.<br>
 If you want to generate your own QrA links; surf to  HTTPS://127.0.0.1:4444/qramaker after launching the project. <br>
 The VR version is  HTTPS://127.0.0.1:4444/vrqramaker<br><br>
-=> The above urls also work on https://qr-a.herokuapp.com/ 
-Test with <img src="https://github.com/jonathanneels/QrA/blob/main/static/scanables/heroku_example.jpg"> </img><br>
+=> The above urls also work on https://qr-a.herokuapp.com/ <br>
+Test with <img style="height:120px;height:120px;"src="https://github.com/jonathanneels/QrA/blob/main/static/scanables/heroku_example.jpg"> </img><br>
 or<br>
-<img src="https://github.com/jonathanneels/QrA/blob/main/static/scanables/heroku_example.jpg"> </img>
+<img style="height:120px;height:120px;"src="https://github.com/jonathanneels/QrA/blob/main/static/scanables/heroku_example.jpg"> </img>
 
 <br><br>
 Note:<br>
