@@ -22,11 +22,18 @@
    
   z-index:99999;width:60vw; height:60vw;margin-left:35%;margin-top:19%;position:absolute;
 }
+#btnFScreen{    position: absolute; z-index:99999;
+   top:0;right:0; margin:5px; background-color:black; color:slategrey;
+}
+
 	</style>
    
  </head>
  
-<body style='margin : 0px; overflow: hidden;width:100%;width:100%;''> <!-- ref: https://skarredghost.com/2019/08/29/how-to-seamless-mobile-ar-js/ & https://levelup.gitconnected.com/simple-augmented-reality-ar-integration-with-a-frame-f625e9dc66b8 --> 
+<body id="body" style='margin : 0px; overflow: hidden;width:100%;width:100%;''> <!-- ref: https://skarredghost.com/2019/08/29/how-to-seamless-mobile-ar-js/ & https://levelup.gitconnected.com/simple-augmented-reality-ar-integration-with-a-frame-f625e9dc66b8 --> 
+
+  <input onclick="openFullscreen()" id="btnFScreen" type="button" value="FS"/>
+
   	<iframe   id="iFrameSimulated" src="https://jonathanneels.be"  class="tiltgal" data-tilt data-tilt-axis="x">test</iframe> 
 
   <!-- a-scene defines the scene that we are agoing to use. After arjs= there are various options that can be customized  -->
@@ -174,7 +181,7 @@ iFrame3DActions(markerVisible, marker.object3D.position,marker.object3D.scale,ma
 
  $( ".tiltgal" ).attr({
  
- style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vh; height:"+(60 + markerPosition.z*1.5).toString()+"vh; margin-left:"+(75+markerPosition.x*10).toString()+"%;margin-top:"+(19-(markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*1.5 +"deg) rotateY("+MarkerRotation.y*1.5* +"deg) scale3d("+(MarkerScale.x)+", "+(MarkerScale.y)+", "+(MarkerScale.z)+");"
+ style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vh; height:"+(60 + markerPosition.z*1.5).toString()+"vh; margin-left:"+(65+markerPosition.x*10).toString()+"%;margin-top:"+(19-(markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*1.5 +"deg) rotateY("+MarkerRotation.y*1.5* +"deg) scale3d("+(MarkerScale.x)+", "+(MarkerScale.y)+", "+(MarkerScale.z)+");"
 });
  }
  else
@@ -186,7 +193,7 @@ iFrame3DActions(markerVisible, marker.object3D.position,marker.object3D.scale,ma
  // Totally upside down frame  style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vw; height:"+(80 + markerPosition.z*1.5).toString()+"vh; margin-left:"+(35+markerPosition.x*10).toString()+"%;margin-top:"+((markerPosition.y)+19).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*10+"deg) rotateY("+MarkerRotation.y*10+"deg) scale3d("+(-MarkerScale.x)+", "+(-MarkerScale.y)+", "+(-MarkerScale.z)+");"
 
 // style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vw; height:"+(60 + markerPosition.z*1.5).toString()+"vw; margin-left:"+(35+markerPosition.x*10).toString()+"%;margin-top:"+(19-(markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*10+"deg) rotateY("+MarkerRotation.y*10+"deg)  scale3d(1,1, 1);"
- style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vw; height:"+(60 + markerPosition.z*1.5).toString()+"vw; margin-left:"+(35+markerPosition.x*10).toString()+"%;margin-top:"+(19-(markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*1.5 +"deg) rotateY("+MarkerRotation.y*1.5 +"deg)  scale3d("+(MarkerScale.x)+", "+(MarkerScale.y)+", "+(MarkerScale.z)+");" // dulled down to something more simple, but it works like a realistic 2D plane in a 3D world now. It's more trusty than the tests above.
+ style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vw; height:"+(60 + markerPosition.z*1.5).toString()+"vw; margin-left:"+(35+markerPosition.x*10).toString()+"%;margin-top:"+(5-(markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*1.5 +"deg) rotateY("+MarkerRotation.y*1.5 +"deg)  scale3d("+(MarkerScale.x)+", "+(MarkerScale.y)+", "+(MarkerScale.z)+");" // dulled down to something more simple, but it works like a realistic 2D plane in a 3D world now. It's more trusty than the tests above.
 
 });
 }
@@ -207,5 +214,40 @@ iFrame3DActions(markerVisible, marker.object3D.position,marker.object3D.scale,ma
 			
 
 			</script>
+ 		<script>
+ 
+/* Get the element you want displayed in fullscreen mode (a video in this example): */
 
+/* When the openFullscreen() function is executed, open the video in fullscreen.
+Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
+function openFullscreen() {
+var elem = document.getElementById("body");
+
+   if (!document.fullscreenElement) {
+
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.webkitRequestFullscreen) { /* Safari */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE11 */
+    elem.msRequestFullscreen();
+  }
+   
+       btnFScreen.style.display = "none";
+
+  }
+  
+ }
+ 
+ setInterval(function () {
+ 
+if(window.innerWidth !== screen.width && window.innerHeight !== screen.height) {// not fullscreen
+         btnFScreen.style.display = "block";
+}
+
+ 
+ }, 1000);
+
+
+ </script>
 </body>
