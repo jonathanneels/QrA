@@ -20,7 +20,7 @@ The VR version is  HTTPS://127.0.0.1:4444/vrqramaker<br>
 
 <br><br>
 Note:<br>
-If you look in the iframe.html file you'll see wild - outcommented - positional transformations when showing a site from an angle. <br>I've purposedly dampen the angle calculations to make a simple, realistic AR websurfing experience. <br>
+If you look in the iframe.html file you'll see wild - outcommented - positional transformations when showing a site from an angle. <br>I've purposely dampen the angle calculations to make a simple, realistic AR websurfing experience. <br>
 That does not mean you can tinker with the file to generate rollercoaster-like effects! 
 <br><br>
 
