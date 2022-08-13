@@ -15,6 +15,7 @@ Download the project and launch it with the cmd command "node index.js".<br>
 Surf to 127.0.0.1:4444 or 127.0.0.1:4444/iframe to the scanpage. <br>
 You can have an VR-AR experience if you go to 127.0.0.1:4444/vrframe.<br>
 If you want to generate your own QrA links; surf to 127.0.0.1:4444/qramaker after launching the project. <br>
+The VR version is 127.0.0.1:4444/vrqramaker<br>
 => The above urls also work on https://qr-a.herokuapp.com/ 
 
 <br><br>
