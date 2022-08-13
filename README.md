@@ -19,7 +19,7 @@ The VR version is  HTTPS://127.0.0.1:4444/vrqramaker<br><br>
 => The above urls also work on https://qr-a.herokuapp.com/ <br>
 Test with <img src="https://github.com/jonathanneels/QrA/blob/main/static/scanables/heroku_example.jpg"> </img><br>
 or<br>
-<img  src="https://github.com/jonathanneels/QrA/blob/main/static/scanables/heroku_example.jpg"> </img>
+<img  src="https://github.com/jonathanneels/QrA/blob/main/static/scanables/herokuVR_example.jpg"> </img>
 
 <hr>
 Note:<br>
