@@ -24,4 +24,4 @@ That does not mean you can tinker with the file to generate rollercoaster-like e
 
 
 PS:
-If you like what I do you can visit https://jonathanneels.itch.io/pog8 and give me a tip.
+If you like what I do you can visit https://jonathanneels.itch.io/pog8 make some noise and maybe give me a tip.
