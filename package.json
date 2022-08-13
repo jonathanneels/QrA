@@ -1,0 +1,22 @@
+{
+  "name": "QrA",
+  "version": "0.2.0",
+  "description": "Augmented Reality for showing websites. Use a classic AR.js marker or a combined one (QrA) desigend for this project.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index_HEROKU.js"
+  },
+  "engines": {
+    "node": "14.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonathanneels/Audio-Input-Effects"
+  },
+  "keywords": [
+    "node",
+    "heroku"
+  ],
+  "author": "Jonathan F.M. Neels",
+  "license": "MIT"
+}
