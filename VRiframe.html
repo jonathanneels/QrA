@@ -55,7 +55,27 @@
 
   </div>
 </div>
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
 
+ navigator.permissions.query({name: 'microphone'})
+ .then((permissionObj) => {
+  console.log(permissionObj.state);
+ })
+ .catch((error) => {
+  console.log('Got error :', error);
+ })
+
+ navigator.permissions.query({name: 'camera'})
+ .then((permissionObj) => {
+  console.log(permissionObj.state);
+ })
+ .catch((error) => {
+  console.log('Got error :', error);
+ })
+});
+
+</script>
 <script>
 
 	var feed=window.location.pathname.replace("vrframe","").trim(); // IMPORTANT it's possible to do (so it has the same functions as with the /iframe) : https://192.168.1.40:4444/vrframeiframe?https:///aikido-torhout.be|/static/scanables/pattern-Skarredghost_marker.patt

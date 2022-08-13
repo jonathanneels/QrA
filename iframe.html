@@ -115,6 +115,23 @@ aMarker=" <a-marker id='aMarker' preset='custom' type='pattern' url='"+urlmark+"
 			
  						$(".a-enter-vr").remove();
 		               $(".a-orientation-modal a-hidden").remove();
+					   
+
+ navigator.permissions.query({name: 'microphone'})
+ .then((permissionObj) => {
+  console.log(permissionObj.state);
+ })
+ .catch((error) => {
+  console.log('Got error :', error);
+ })
+
+ navigator.permissions.query({name: 'camera'})
+ .then((permissionObj) => {
+  console.log(permissionObj.state);
+ })
+ .catch((error) => {
+  console.log('Got error :', error);
+ })
 
 						
 
