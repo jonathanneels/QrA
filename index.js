@@ -24,11 +24,11 @@ function launchServer(){
 https.createServer(options, function (req, res) { 
 
 var feedbackUrl = req.url;
-   if (feedbackUrl.trim() === '/default') { 
+   if (feedbackUrl.trim() === '/') { 
         res.writeHead(200, {'Content-Type': 'text/html'});
-              fs.createReadStream('default_arjs_test.html').pipe(res); 
+                          fs.createReadStream('iframe.html').pipe(res);//  fs.createReadStream('default_arjs_test.html').pipe(res); 
     }
-else  if	(feedbackUrl.trim().startsWith('/iframe') || feedbackUrl.trim() === '/')   {
+else  if	(feedbackUrl.trim().startsWith('/iframe')  )   {
 	   res.writeHead(200, {'Content-Type': 'text/html'});
               fs.createReadStream('iframe.html').pipe(res)
 	}

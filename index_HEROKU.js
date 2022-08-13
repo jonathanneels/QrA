@@ -59,7 +59,11 @@ const server = http.createServer((req, res) => {
  
 
 var feedbackUrl = req.url;
-   if	(feedbackUrl.trim().startsWith('/iframe') || feedbackUrl.trim() === '/') {
+  if (feedbackUrl.trim() === '/') { 
+        res.writeHead(200, {'Content-Type': 'text/html'});
+                     fs.createReadStream('iframe.html').pipe(res);//       fs.createReadStream('default_arjs_test.html').pipe(res); 
+    }
+else  if	(feedbackUrl.trim().startsWith('/iframe')  ) {
 	   res.writeHead(200, {'Content-Type': 'text/html'});
               fs.createReadStream('iframe.html').pipe(res)
 	}
