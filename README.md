@@ -12,8 +12,10 @@ QrA uses tilt-js to simulate 3D-effects (parallax) and AR.js a-box as the starto
 
 Local:
 Download the project and launch it with the cmd command "node index.js".
+Surf to 127.0.0.1:4444 or 127.0.0.1:4444/iframe to the scanpage. 
+You can have an VR-AR experience if you go to 127.0.0.1:4444/vrframe.
 If you want to generate your own QrA links; surf to 127.0.0.1:4444/qramaker after launching the project. 
-
+=> The above urls also work on https://qr-a.herokuapp.com/ 
 
 
 Note:
