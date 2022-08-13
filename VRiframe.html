@@ -26,13 +26,13 @@
 }
 
 
- #iframeA, #iframeB{ height: 80%; width:45%; margin-top: 25px; position:absolute;}
- #iframeA{   margin-left: 5px;}
+ #iframeA, #iframeB{ height: 80%; width:35%; margin-top: 25px; position:absolute;}
+ #iframeA{   margin-left: 2px;}
 
-#iframeB{ right:0;   margin-right: 5px;  }
+#iframeB{ right:0;   margin-right: 2px;  }
 
 #btnFScreen{    position: absolute;
-    top: 25%; margin-left:48%;
+    top: 25%; margin-left:48%; background-color:black; color:slategrey;
 }
 	</style>
    
@@ -108,8 +108,22 @@ var elem = document.getElementById("body");
     elem.msRequestFullscreen();
   }
    
+       btnFScreen.style.display = "none";
+
   }
+  
  }
+ 
+ setInterval(function () {
+ 
+if(window.innerWidth !== screen.width && window.innerHeight !== screen.height) {// not fullscreen
+         btnFScreen.style.display = "block";
+}
+
+ 
+ }, 1000);
+
+
  </script>
 
 
