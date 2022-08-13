@@ -56,6 +56,18 @@
   </div>
 </div>
 
+<script>
+
+	var feed=window.location.pathname.replace("vrframe","").trim(); // IMPORTANT it's possible to do (so it has the same functions as with the /iframe) : https://192.168.1.40:4444/vrframeiframe?https:///aikido-torhout.be|/static/scanables/pattern-Skarredghost_marker.patt
+	if(feed.length >1)
+	{
+		    document.getElementById('iframeA').src = window.location.href.replace(window.location.pathname,feed);
+     document.getElementById('iframeB').src = window.location.href.replace(window.location.pathname,feed);
+	 	console.log(window.location.href.replace(window.location.pathname,feed))
+
+	}
+
+</script>
 
 		 		<script>
  
