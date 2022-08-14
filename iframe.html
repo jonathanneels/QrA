@@ -290,7 +290,7 @@ var elem = document.getElementById("body");
  
  setInterval(function () {
  
-if(window.innerWidth !== screen.width && window.innerHeight !== screen.height) {// not fullscreen
+if((!window.fullScreen) &&  (window.innerWidth !== screen.width && window.innerHeight !== screen.height)) {// not fullscreen
          btnFScreen.style.display = "block";
 }
 
