@@ -56,7 +56,13 @@
   </div>
 </div>
 <script>
-document.addEventListener("DOMContentLoaded", function(event) {
+function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.html   & https://whatwebcando.today/permissions.html
+  if (!navigator.mediaDevices && !navigator.getUserMedia && !navigator.webkitGetUserMedia &&
+    !navigator.mozGetUserMedia && !navigator.msGetUserMedia) {
+    alert('User Media API not supported.');
+
+    return;
+  }
 
  navigator.permissions.query({name: 'microphone'})
  .then((permissionObj) => {
@@ -73,6 +79,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
  .catch((error) => {
   console.log('Got error :', error);
  })
+ 
+}
+document.addEventListener("DOMContentLoaded", function(event) {
+getStream('video');
 });
 
 </script>

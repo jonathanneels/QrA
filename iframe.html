@@ -87,6 +87,31 @@ urlAr = window.location.href.split("?")[1];
 
    }
 }
+function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.html   & https://whatwebcando.today/permissions.html
+  if (!navigator.mediaDevices && !navigator.getUserMedia && !navigator.webkitGetUserMedia &&
+    !navigator.mozGetUserMedia && !navigator.msGetUserMedia) {
+    alert('User Media API not supported.');
+
+    return;
+  }
+
+ navigator.permissions.query({name: 'microphone'})
+ .then((permissionObj) => {
+  console.log(permissionObj.state);
+ })
+ .catch((error) => {
+  console.log('Got error :', error);
+ })
+
+ navigator.permissions.query({name: 'camera'})
+ .then((permissionObj) => {
+  console.log(permissionObj.state);
+ })
+ .catch((error) => {
+  console.log('Got error :', error);
+ })
+ 
+}
 			</script>
 			<script>
 	
@@ -123,25 +148,7 @@ aMarker=" <a-marker id='aMarker' preset='custom' type='pattern' url='"+urlmark+"
  						$(".a-enter-vr").remove();
 		               $(".a-orientation-modal a-hidden").remove();
 					   
-
- navigator.permissions.query({name: 'microphone'})
- .then((permissionObj) => {
-  console.log(permissionObj.state);
- })
- .catch((error) => {
-  console.log('Got error :', error);
- })
-
- navigator.permissions.query({name: 'camera'})
- .then((permissionObj) => {
-  console.log(permissionObj.state);
- })
- .catch((error) => {
-  console.log('Got error :', error);
- })
-
-						
-
+getStream('video');
 			
 			loadArUrl();
 init();
