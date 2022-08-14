@@ -107,12 +107,12 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
     return;
    }
 
-/* var constraints = {};
+ var constraints = {};
   constraints[type] = true;
   
   getUserMedia(constraints)
     .then(function (stream) {
-      var mediaControl = document.querySelector(type);
+     /* var mediaControl = document.querySelector(type);
       
       if ('srcObject' in mediaControl) {
         mediaControl.srcObject = stream;
@@ -122,11 +122,11 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
         mediaControl.src = (window.URL || window.webkitURL).createObjectURL(stream);
       }
       
-      mediaControl.play();
+      mediaControl.play();*/
     })
     .catch(function (err) {
       console.log('Error: ' + err);
-    });*/
+    });
 
 
  navigator.permissions.query({name: 'microphone'})
