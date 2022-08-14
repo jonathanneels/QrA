@@ -7,8 +7,8 @@ How it works. <br>
 You scan a qr-code. The url sends you to a site. When the camera remains focussed on the qr-code a website will now pop-ups! 
 <hr>
 Libs:<br>
-QrA uses tilt-js to simulate 3D-effects (parallax) and AR.js a-box as the startobject. 
-
+QrA uses tilt-js to simulate 3D-effects (parallax) and AR.js a-box as the startobject. <br>
+The iframe gets pushed by the tilt.js functions and the AR cube's .position, .scale and .rotation is used as reference.
 <hr>
 Local:<br>
 Download the project and launch it with the cmd command "node index.js".<br>
