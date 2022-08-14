@@ -26,7 +26,7 @@
 }
 
 
- #iframeA, #iframeB{ height: 80%; width:31%; margin-top: 25px; position:absolute;}/* width = important to alter sight! */
+ #iframeA, #iframeB{ height: 80%; width:30%; margin-top: 25px; position:absolute;}/* width = important to alter sight! */
  #iframeA{   margin-left: 2px;}
 
 #iframeB{ right:0;   margin-right: 2px;  }
@@ -148,7 +148,7 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
 }
 document.addEventListener("DOMContentLoaded", function(event) {
 getStream('video');
-//hideOneMarker();
+ hideOneMarker();
 hideBtnsInsideFrames();
 });
 
