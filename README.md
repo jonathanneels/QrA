@@ -3,7 +3,7 @@ A way to generate AR-website objects. So you can have 3D-like online chats, arca
 
 I believe this open-source addition opens up a whole new world for AR; you don't have to know 3D or the three.js framework to make beautiful ideas. <br>You only need to know how to make (or refer to) a website.
 <hr>
-How it works. <br>
+How it works:<br>
 You scan a qr-code. The url sends you to a site. When the camera remains focussed on the qr-code a website will now pop-ups! 
 <hr>
 Libs:<br>
