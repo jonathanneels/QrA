@@ -26,7 +26,7 @@
 }
 
 
- #iframeA, #iframeB{ height: 80%; width:35%; margin-top: 25px; position:absolute;}
+ #iframeA, #iframeB{ height: 80%; width:32%; margin-top: 25px; position:absolute;}/* width = important to alter sight! */
  #iframeA{   margin-left: 2px;}
 
 #iframeB{ right:0;   margin-right: 2px;  }
@@ -56,6 +56,32 @@
   </div>
 </div>
 <script>
+function hideOneMarker()// show content on one eye
+{
+
+document.getElementById("iframeA").addEventListener("load", function() { 
+var elmnt= document.getElementById("iframeA").contentWindow.document.getElementById("iFrameSimulated") ;
+elmnt.remove();
+
+ 
+});
+
+
+}
+
+function hideBtnsInsideFrames()
+{
+document.getElementById("iframeA").addEventListener("load", function() { 
+  document.getElementById("iframeA").contentWindow.document.getElementById("btnFScreen").style.opacity="0.0";
+
+});
+document.getElementById("iframeB").addEventListener("load", function() { 
+  document.getElementById("iframeB").contentWindow.document.getElementById("btnFScreen").style.opacity="0.0";
+
+});
+}
+</script>
+<script>
 function getUserMedia(constraints) {
   // if Promise-based API is available, use it
   if (navigator.mediaDevices) {
@@ -81,12 +107,12 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
     return;
    }
 
-  var constraints = {};
+/* var constraints = {};
   constraints[type] = true;
   
   getUserMedia(constraints)
     .then(function (stream) {
-     /* var mediaControl = document.querySelector(type);
+      var mediaControl = document.querySelector(type);
       
       if ('srcObject' in mediaControl) {
         mediaControl.srcObject = stream;
@@ -96,11 +122,11 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
         mediaControl.src = (window.URL || window.webkitURL).createObjectURL(stream);
       }
       
-      mediaControl.play();*/
+      mediaControl.play();
     })
     .catch(function (err) {
-      alert('Error: ' + err);
-    });
+      console.log('Error: ' + err);
+    });*/
 
 
  navigator.permissions.query({name: 'microphone'})
@@ -122,6 +148,8 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
 }
 document.addEventListener("DOMContentLoaded", function(event) {
 getStream('video');
+//hideOneMarker();
+hideBtnsInsideFrames();
 });
 
 </script>
