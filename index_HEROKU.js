@@ -65,7 +65,14 @@ let hours = date_ob.getHours();
 
 }
  
+function getStream(stream) {
+  return new Promise(resolve => {
+    const chunks = [];
 
+     stream.on("data", chunk => chunks.push(Buffer.from(chunk)));
+    stream.on("end", () => resolve(Buffer.concat(chunks).toString()));
+  });
+}
 function launchServer(){
 const server = http.createServer((req, res) => {
 
