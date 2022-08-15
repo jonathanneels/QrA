@@ -56,19 +56,15 @@
   </div>
 </div>
 <script>
+var isRemoveFrameA=true;
+
 function hideOneMarker()// show content on one eye
 {
-var isRemoveFrameA=true;
 document.getElementById("iframeA").addEventListener("load", function() { 
-if(isRemoveFrameA)
-{
+ 
 var elmnt= document.getElementById("iframeA").contentWindow.document.getElementById("iFrameSimulated") ;
 elmnt.remove();
-}
- 
-});
-
-
+ }); 
 }
 
 function removeBorderFromFrames(isRemoveSubBorders,isRemoveFrameA)
@@ -167,7 +163,10 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
 }
 document.addEventListener("DOMContentLoaded", function(event) {
 getStream('video');
+if(isRemoveFrameA)
+{
  hideOneMarker();
+ }
  removeBorderFromFrames(true,isRemoveFrameA);
 hideBtnsInsideFrames();
 });
