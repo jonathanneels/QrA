@@ -58,22 +58,24 @@
 <script>
 function hideOneMarker()// show content on one eye
 {
-
+var isRemoveFrameA=true;
 document.getElementById("iframeA").addEventListener("load", function() { 
+if(isRemoveFrameA)
+{
 var elmnt= document.getElementById("iframeA").contentWindow.document.getElementById("iFrameSimulated") ;
 elmnt.remove();
-
+}
  
 });
 
 
 }
 
-function removeBorderFromFrames(isRemoveSubBorders)
+function removeBorderFromFrames(isRemoveSubBorders,isRemoveFrameA)
 {
  document.getElementById("iframeA").addEventListener("load", function() { 
   document.getElementById("iframeA").frameBorder = 0;
-  if(isRemoveSubBorders){
+  if(isRemoveSubBorders && isRemoveFrameA){
   document.getElementById("iframeA").contentWindow.document.getElementById("iFrameSimulated").frameBorder = 0;
   }
 
@@ -166,7 +168,7 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
 document.addEventListener("DOMContentLoaded", function(event) {
 getStream('video');
  hideOneMarker();
- removeBorderFromFrames(true);
+ removeBorderFromFrames(true,isRemoveFrameA);
 hideBtnsInsideFrames();
 });
 
