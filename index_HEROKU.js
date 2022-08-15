@@ -10,8 +10,11 @@ const { parse } = require('querystring');
  
 const directoryPath = path.join(__dirname, 'static');
 
- var port = process.env.PORT || 8010;;//REF:https://help.heroku.com/P1AVPANS/why-is-my-node-js-app-crashing-with-an-r10-error
+ var port = process.env.PORT || 8010;//REF:https://help.heroku.com/P1AVPANS/why-is-my-node-js-app-crashing-with-an-r10-error
   
+   var memoNote = {user:"",text:"",date:dateTimeNow()};
+ var memoList=[];
+
 	if(cluster.isMaster) {//REF: https://www.sitepoint.com/how-to-create-a-node-js-cluster-for-speeding-up-your-apps/ & https://stackoverflow.com/questions/5999373/how-do-i-prevent-node-js-from-crashing-try-catch-doesnt-work
     var numWorkers =process.env.WEB_CONCURRENCY || 1;// require('os').cpus().length; https://stackoverflow.com/questions/28616813/how-to-properly-scale-nodejs-app-on-heroku-using-clusters
 
@@ -45,7 +48,22 @@ const directoryPath = path.join(__dirname, 'static');
   });
   
 	 
+function dateTimeNow() 
+{
+	
+	let ts = Date.now();
 
+let date_ob = new Date(ts);
+let date = date_ob.getDate();
+let month = date_ob.getMonth() + 1;
+let year = date_ob.getFullYear();
+let hours = date_ob.getHours();
+ let minutes = date_ob.getMinutes();
+ let seconds = date_ob.getSeconds();
+
+ return(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds);
+
+}
  
 
 function launchServer(){
@@ -82,6 +100,53 @@ else  if	(feedbackUrl.trim().startsWith('/iframe')  ) {
     res.writeHead(200);
     res.end(data);
   }); 
+	}
+	else if	(feedbackUrl.trim().startsWith('/memo') ) {
+		
+		var decodeString=unescape(feedbackUrl.replace('/memo','') ).trim();
+ 		var feedbackUrlParts = decodeString.replace('/memo','').trim().split("|");
+		if(feedbackUrlParts.length == 2)
+		{
+ 
+	for (let i = 0; i < memoList.length; i++) {
+	 
+	 if(memoList[i].user == feedbackUrlParts[0].trim())
+	 {
+		   memoList.splice(i, 1);
+		 break;
+		 
+	 }
+ 			}
+ 
+					memoNote = {user:feedbackUrlParts[0].trim(),text:feedbackUrlParts[1].trim(),date:dateTimeNow()};
+				memoList.push(memoNote);
+				res.writeHead(200,{"Content-Type" : "text/html"});//res.writeHead(200,{"Content-Type" : "text/plain"});
+		    		    res.end("Success!!<br>Call your memo: /call" +feedbackUrlParts[0].trim());//res.end("Hello World<br><b> w</b>");
+
+			
+		}
+			else
+			{
+ 				res.writeHead(200,{"Content-Type" : "text/html"});
+		    		    res.end("Form of a memo: /memoNAME|MESSAGE");
+				
+			}
+	}
+	else if	(feedbackUrl.trim().startsWith('/call') ) {
+		
+		var decodeString=unescape(feedbackUrl.replace('/call','') ).trim();
+	var feedback="Entry not found";
+	for (let i = 0; i < memoList.length; i++) {
+	 
+ 	 if(memoList[i].user == decodeString)
+	 {
+		 feedback=memoList[i].text;
+		 
+	 }
+ 			}
+ 				res.writeHead(200,{"Content-Type" : "text/html"}); 
+		    		    res.end(feedback); 
+
 	}
   else{  
   fs.readFile(__dirname + feedbackUrl, function (err,data) {//REF:https://stackoverflow.com/questions/16333790/node-js-quick-file-server-static-files-over-http

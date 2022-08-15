@@ -10,7 +10,9 @@ const options = {
  var port = 4444;
  var ip= "127.0.0.1";
  
- 
+ var memoNote = {user:"",text:"",date:dateTimeNow()};
+ var memoList=[];
+
  require('dns').lookup(require('os').hostname(), function (err, add, fam) {
  // console.log('addr: '+add);
   ip = add; // if netwerk allows it - Windows  Firewall - https://stackoverflow.com/questions/5489956/how-could-others-on-a-local-network-access-my-nodejs-app-while-its-running-on/5490033
@@ -19,6 +21,24 @@ const options = {
 	launchServer();
 	
 });
+
+function dateTimeNow() 
+{
+	
+	let ts = Date.now();
+
+let date_ob = new Date(ts);
+let date = date_ob.getDate();
+let month = date_ob.getMonth() + 1;
+let year = date_ob.getFullYear();
+let hours = date_ob.getHours();
+ let minutes = date_ob.getMinutes();
+ let seconds = date_ob.getSeconds();
+
+ return(year + "-" + month + "-" + date + " " + hours + ":" + minutes + ":" + seconds);
+
+}
+
 
 function launchServer(){
 https.createServer(options, function (req, res) { 
@@ -47,6 +67,53 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
     res.writeHead(200);
     res.end(data);
   }); 
+	}
+	else if	(feedbackUrl.trim().startsWith('/memo') ) {
+		
+		var decodeString=unescape(feedbackUrl.replace('/memo','') ).trim();
+ 		var feedbackUrlParts = decodeString.replace('/memo','').trim().split("|");
+		if(feedbackUrlParts.length == 2)
+		{
+ 
+	for (let i = 0; i < memoList.length; i++) {
+	 
+	 if(memoList[i].user == feedbackUrlParts[0].trim())
+	 {
+		   memoList.splice(i, 1);
+		 break;
+		 
+	 }
+ 			}
+ 
+					memoNote = {user:feedbackUrlParts[0].trim(),text:feedbackUrlParts[1].trim(),date:dateTimeNow()};
+				memoList.push(memoNote);
+				res.writeHead(200,{"Content-Type" : "text/html"});//res.writeHead(200,{"Content-Type" : "text/plain"});
+		    		    res.end("Success!!<br>Call your memo: /call" +feedbackUrlParts[0].trim());//res.end("Hello World<br><b> w</b>");
+
+			
+		}
+			else
+			{
+ 				res.writeHead(200,{"Content-Type" : "text/html"});
+		    		    res.end("Form of a memo: /memoNAME|MESSAGE");
+				
+			}
+	}
+	else if	(feedbackUrl.trim().startsWith('/call') ) {
+		
+		var decodeString=unescape(feedbackUrl.replace('/call','') ).trim();
+	var feedback="Entry not found";
+	for (let i = 0; i < memoList.length; i++) {
+	 
+ 	 if(memoList[i].user == decodeString)
+	 {
+		 feedback=memoList[i].text;
+		 
+	 }
+ 			}
+ 				res.writeHead(200,{"Content-Type" : "text/html"}); 
+		    		    res.end(feedback); 
+
 	}
   else{  
   fs.readFile(__dirname + feedbackUrl, function (err,data) {//REF:https://stackoverflow.com/questions/16333790/node-js-quick-file-server-static-files-over-http
