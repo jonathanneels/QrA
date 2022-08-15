@@ -70,9 +70,9 @@ elmnt.remove();
 function removeBorderFromFrames(isRemoveSubBorders,isRemoveFrameA)
 {
  document.getElementById("iframeA").addEventListener("load", function() {
-   if(isRemoveSubBorders  ){ 
+   if(  !isRemoveFrameA  ){ 
   document.getElementById("iframeA").frameBorder = 0;
-  if(isRemoveSubBorders && isRemoveFrameA){
+  if(isRemoveSubBorders ){
   document.getElementById("iframeA").contentWindow.document.getElementById("iFrameSimulated").frameBorder = 0;
   }
 }
