@@ -84,6 +84,11 @@ var feedbackUrl = req.url;
 else  if	(feedbackUrl.trim().startsWith('/iframe')  ) {
 	   res.writeHead(200, {'Content-Type': 'text/html'});
               fs.createReadStream('iframe.html').pipe(res)
+	} 
+		else  if	(feedbackUrl.trim().startsWith('/noborderframe')  )   {
+	   res.writeHead(200, {'Content-Type': 'text/html'});
+	   var htmlPage =   fs.createReadStream('iframe.html');  
+      getStream(htmlPage).then(r=>  res.end(r)); 
 	}
 	else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
 	   res.writeHead(200, {'Content-Type': 'text/html'});

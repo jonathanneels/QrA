@@ -42,14 +42,14 @@
   
 <div class="row">
   <div class="column">
-    <iframe  frameBorder="0" id="iframeA" src="iframe.html"  > </iframe> 
+    <iframe    id="iframeA" src="/iframe"  > </iframe> 
 
   </div>
   
   <input onclick="openFullscreen()" id="btnFScreen" type="button" value="FS"/>
 
   <div class="column">
-      <iframe  frameBorder="0" id="iframeB" src="iframe.html"   > </iframe> 
+      <iframe    id="iframeB" src="/iframe"   > </iframe> 
 
   </div>
 
@@ -69,6 +69,23 @@ elmnt.remove();
 
 }
 
+function removeBorderFromFrames(isRemoveSubBorders)
+{
+ document.getElementById("iframeA").addEventListener("load", function() { 
+  document.getElementById("iframeA").frameBorder = 0;
+  if(isRemoveSubBorders){
+  document.getElementById("iframeA").contentWindow.document.getElementById("iFrameSimulated").frameBorder = 0;
+  }
+
+});
+document.getElementById("iframeB").addEventListener("load", function() { 
+  document.getElementById("iframeB").frameBorder = 0;
+    if(isRemoveSubBorders){
+  document.getElementById("iframeB").contentWindow.document.getElementById("iFrameSimulated").frameBorder = 0;
+}
+});
+
+}
 function hideBtnsInsideFrames()
 {
 document.getElementById("iframeA").addEventListener("load", function() { 
@@ -149,6 +166,7 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
 document.addEventListener("DOMContentLoaded", function(event) {
 getStream('video');
  hideOneMarker();
+ removeBorderFromFrames();
 hideBtnsInsideFrames();
 });
 

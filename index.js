@@ -39,6 +39,16 @@ let hours = date_ob.getHours();
 
 }
 
+function getStream(stream) {
+  return new Promise(resolve => {
+    const chunks = [];
+
+     stream.on("data", chunk => chunks.push(Buffer.from(chunk)));
+    stream.on("end", () => resolve(Buffer.concat(chunks).toString()));
+  });
+}
+
+
 
 function launchServer(){
 https.createServer(options, function (req, res) { 
@@ -51,6 +61,11 @@ var feedbackUrl = req.url;
 	else  if	(feedbackUrl.trim().startsWith('/iframe')  )   {
 	   res.writeHead(200, {'Content-Type': 'text/html'});
               fs.createReadStream('iframe.html').pipe(res)
+	}
+	else  if	(feedbackUrl.trim().startsWith('/noborderframe')  )   {
+	   res.writeHead(200, {'Content-Type': 'text/html'});
+	   var htmlPage =   fs.createReadStream('iframe.html');  
+      getStream(htmlPage).then(r=>  res.end(r));//+"<label id='hideborder'> true </label>"));
 	}
 else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
 	   res.writeHead(200, {'Content-Type': 'text/html'});
