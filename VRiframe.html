@@ -69,12 +69,13 @@ elmnt.remove();
 
 function removeBorderFromFrames(isRemoveSubBorders,isRemoveFrameA)
 {
- document.getElementById("iframeA").addEventListener("load", function() { 
+ document.getElementById("iframeA").addEventListener("load", function() {
+   if(isRemoveSubBorders  ){ 
   document.getElementById("iframeA").frameBorder = 0;
   if(isRemoveSubBorders && isRemoveFrameA){
   document.getElementById("iframeA").contentWindow.document.getElementById("iFrameSimulated").frameBorder = 0;
   }
-
+}
 });
 document.getElementById("iframeB").addEventListener("load", function() { 
   document.getElementById("iframeB").frameBorder = 0;
