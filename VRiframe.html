@@ -128,6 +128,10 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
   
   getUserMedia(constraints)
     .then(function (stream) {
+	
+	const tracks = stream.getTracks(); 
+tracks.forEach(track => track.stop());
+
      /* var mediaControl = document.querySelector(type);
       
       if ('srcObject' in mediaControl) {
