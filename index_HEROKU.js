@@ -73,6 +73,8 @@ function getStream(stream) {
     stream.on("end", () => resolve(Buffer.concat(chunks).toString()));
   });
 }
+
+
 function launchServer(){
 const server = http.createServer((req, res) => {
 
@@ -85,24 +87,24 @@ const server = http.createServer((req, res) => {
 
 var feedbackUrl = req.url;
   if (feedbackUrl.trim() === '/') { 
-        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.writeHead(200, {'Content-Type': 'text/html',   'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
                      fs.createReadStream('iframe.html').pipe(res);//       fs.createReadStream('default_arjs_test.html').pipe(res); 
     }
 		else  if	(feedbackUrl.trim().startsWith('/read')  ||  feedbackUrl.trim() ==('/qr') )   {
-	   res.writeHead(200, {'Content-Type': 'text/html'});
+	   res.writeHead(200, {'Content-Type': 'text/html', 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
               fs.createReadStream('readQrA.html').pipe(res)
 	}
 else  if	(feedbackUrl.trim().startsWith('/iframe')  ) {
-	   res.writeHead(200, {'Content-Type': 'text/html'});
+	   res.writeHead(200, {'Content-Type': 'text/html', 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
               fs.createReadStream('iframe.html').pipe(res)
 	} 
 		else  if	(feedbackUrl.trim().startsWith('/noborderframe')  )   {
-	   res.writeHead(200, {'Content-Type': 'text/html'});
+	   res.writeHead(200, {'Content-Type': 'text/html', 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
 	   var htmlPage =   fs.createReadStream('iframe.html');  
       getStream(htmlPage).then(r=>  res.end(r)); 
 	}
 	else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
-	   res.writeHead(200, {'Content-Type': 'text/html'});
+	   res.writeHead(200, {'Content-Type': 'text/html', 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
               fs.createReadStream('VRiframe.html').pipe(res)
 	}
 	else if	(feedbackUrl.trim().startsWith('/qramaker') ) {
