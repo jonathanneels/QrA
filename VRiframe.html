@@ -183,7 +183,8 @@ hideBtnsInsideFrames();
 	if(feed.length >1)
 	{
 		    document.getElementById('iframeA').src = window.location.href.replace(window.location.pathname,feed);
-     document.getElementById('iframeB').src = window.location.href.replace(window.location.pathname,feed);
+	 setTimeout(function(){      document.getElementById('iframeB').src = window.location.href.replace(window.location.pathname,feed);}, 5000,feed);
+
 	 	console.log(window.location.href.replace(window.location.pathname,feed))
 
 	}
