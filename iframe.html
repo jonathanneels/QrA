@@ -114,7 +114,7 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
 
     return;
    }
-
+/*  
  var constraints = {};
   constraints[type] = true;
   
@@ -125,7 +125,7 @@ function getStream (type) { //REF:https://whatwebcando.today/camera-microphone.h
 const tracks = stream.getTracks(); //REF: https://stackoverflow.com/questions/48775154/notreadableerror-could-not-start-source
 tracks.forEach(track => track.stop());
 
-    /*   var mediaControl = document.querySelector(type);
+     var mediaControl = document.querySelector(type);
       
       if ('srcObject' in mediaControl) {
         mediaControl.srcObject = stream;
@@ -135,13 +135,13 @@ tracks.forEach(track => track.stop());
         mediaControl.src = (window.URL || window.webkitURL).createObjectURL(stream);
       }
       
-      mediaControl.play();*/
+      mediaControl.play();
     })
     .catch(function (err) {
       console.log('Error: ' + err);
     });
 
-
+*/
  navigator.permissions.query({name: 'microphone'})
  .then((permissionObj) => {
   console.log(permissionObj.state);
