@@ -31,7 +31,7 @@ That does not mean you can tinker with the file to generate rollercoaster-like e
 
 
 PS:<br>
-If you make your own QrA links, I suggest using a URL shortener like https://tinyurl  <br>
+If you make your own QrA links, I suggest using an URL shortener like https://tinyurl  <br>
 QrA homepage: https://qr-a.herokuapp.com  QrA-link on home: https://tinyurl
 <hr>
 PS 2:<br>
