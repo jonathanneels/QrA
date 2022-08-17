@@ -129,7 +129,8 @@ video.play();
 	var splittedOutputdata	=  outputData.innerText.split("\n");	
 	if(splittedOutputdata[splittedOutputdata.length-1] != code.data){
  					        outputData.innerHTML = ''; // clear existing
-							
+												actionHandler();
+
 							      var a = document.createElement('a');
       var linkText = document.createTextNode(code.data);
       a.appendChild(linkText);
@@ -138,18 +139,18 @@ video.play();
         outputData.appendChild(a);     //      document.body.appendChild(a); 
                 
 
-					actionHandler();
 					
 				//	var strWindowFeatures = "location=yes,height=570,width=520,scrollbars=yes,status=yes"; ref: https://stackoverflow.com/questions/14132122/open-url-in-new-window-with-javascript
 		var URL = code.data;
 		//window.open(URL, "_blank");//, strWindowFeatures);
 		
-		 var link = document.createElement("a")
-  link.href = URL
-  link.target = "_blank"
-  link.click()
+		setTimeout(function(){
+				 var link = document.createElement("a")
+		  link.href = URL
+		  link.target = "_blank"
+		  link.click()
 
-
+		}, 5000,);
 					
 					}
 
