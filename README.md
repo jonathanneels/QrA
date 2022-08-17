@@ -12,6 +12,7 @@ The iframe gets pushed by the tilt.js functions and the AR cube's .position, .sc
 <hr>
 Local:<br>
 Download the project and launch it with the cmd command "node index.js".<br>
+If you have a QrA-code then you can use the following reader: HTTPS://127.0.0.1:4444/qr<br>
 Surf to  HTTPS://127.0.0.1:4444 or  HTTPS://127.0.0.1:4444/iframe to the scanpage. <br>
 You can have an VR-AR experience if you go to  HTTPS://127.0.0.1:4444/vrframe.<br>
 If you want to generate your own QrA links; surf to  HTTPS://127.0.0.1:4444/qramaker after launching the project. <br>
