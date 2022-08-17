@@ -30,6 +30,7 @@ That does not mean you can tinker with the file to generate rollercoaster-like e
 <hr>
 
 
-
 PS:<br>
+If you make your own qra links, I suggest using a urlshortener like https://www.shorturl.at/shortener.php <br><br>
+PS 2:<br>
 If you like what I do you can visit https://jonathanneels.itch.io/pog8 make some noise and maybe buy me a beer.
