@@ -79,8 +79,8 @@ function makeCode () {
 	 var MarkerUrl= elTextMarker.value.trim();
 
 if (serverVal.includes("noborderframe")) {
-	QrACode.makeCode(serverVal+"iframe?"+QrAUrl);
-			console.log(serverVal+"iframe?"+QrAUrl)
+	QrACode.makeCode(serverVal+"?"+QrAUrl);
+			console.log(serverVal+"?"+QrAUrl)
 
 	}
 	else	if (!elTextMarker.value) {
