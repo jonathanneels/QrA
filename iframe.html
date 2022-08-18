@@ -233,7 +233,7 @@ iFrame3DActions(markerVisible, marker.object3D.position,marker.object3D.scale,ma
 
 //$("#iFrameSimulated").css('margin-left', markerPosition.y*100);
 
- if(window.innerHeight > window.innerWidth)//REF: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
+ if(window.innerHeight > window.innerWidth || window.matchMedia("(orientation: portrait)").matches)//REF: https://stackoverflow.com/questions/4917664/detect-viewport-orientation-if-orientation-is-portrait-display-alert-message-ad
  {
 
  $( ".tiltgal" ).attr({
