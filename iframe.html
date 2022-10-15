@@ -26,6 +26,26 @@
    top:0;right:0; margin:5px; background-color:black; color:slategrey;
 }
 
+
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr; /* IE */
+    -webkit-appearance: slider-vertical; /* Chromium */
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+}
+#rOffsetHorizontal,#rOffsetVertical
+{ 
+bottom:0;
+right:0;
+   position: absolute; z-index:99999;
+    opacity:0.4;
+   }
+   #rOffsetHorizontal 
+{ 
+margin-right: 8%;
+}
 	</style>
    
  </head>
@@ -33,6 +53,9 @@
 <body id="body" style='margin : 0px; overflow: hidden;width:100%;width:100%;''> <!-- ref: https://skarredghost.com/2019/08/29/how-to-seamless-mobile-ar-js/ & https://levelup.gitconnected.com/simple-augmented-reality-ar-integration-with-a-frame-f625e9dc66b8 --> 
 
   <input onclick="openFullscreen()" id="btnFScreen" type="button" value="FS"/>
+
+<input type="range" min="-10" max= "10"  step="1" value="0.0" orient="vertical" id="rOffsetVertical" />
+<input type="range" min="-2" max= "2" step="0.05" value="0.0"  id="rOffsetHorizontal" />
 
   	<iframe  id="iFrameSimulated" src="https://jonathanneels.be"  class="tiltgal" data-tilt data-tilt-axis="x">test</iframe> 
 
@@ -227,6 +250,9 @@ iFrame3DActions(markerVisible, marker.object3D.position,marker.object3D.scale,ma
 		function iFrame3DActions(isMarkerVisible, markerPosition,MarkerScale, MarkerRotation)
 			{
 			
+			var offsetH =document.getElementById("rOffsetHorizontal").value;
+			var offsetV =document.getElementById("rOffsetVertical").value;
+
 			if(isMarkerVisible)
 			{
 		//	$("#iFrameSimulated").css('margin-top', markerPosition.x*100);
@@ -238,7 +264,7 @@ iFrame3DActions(markerVisible, marker.object3D.position,marker.object3D.scale,ma
 
  $( ".tiltgal" ).attr({
  
- style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vh; height:"+(60 + markerPosition.z*1.5).toString()+"vh; margin-left:"+(65+markerPosition.x*10).toString()+"%;margin-top:"+(19-(markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*1.5 +"deg) rotateY("+MarkerRotation.y*1.5* +"deg) scale3d("+(MarkerScale.x)+", "+(MarkerScale.y)+", "+(MarkerScale.z)+");"
+ style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vh; height:"+(60 + markerPosition.z*1.5).toString()+"vh; margin-left:"+offsetH*(65+markerPosition.x*10).toString()+"%;margin-top:"+(19-(offsetV+markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*1.5 +"deg) rotateY("+MarkerRotation.y*1.5* +"deg) scale3d("+(MarkerScale.x)+", "+(MarkerScale.y)+", "+(MarkerScale.z)+");"
 });
  }
  else
@@ -250,7 +276,7 @@ iFrame3DActions(markerVisible, marker.object3D.position,marker.object3D.scale,ma
  // Totally upside down frame  style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vw; height:"+(80 + markerPosition.z*1.5).toString()+"vh; margin-left:"+(35+markerPosition.x*10).toString()+"%;margin-top:"+((markerPosition.y)+19).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*10+"deg) rotateY("+MarkerRotation.y*10+"deg) scale3d("+(-MarkerScale.x)+", "+(-MarkerScale.y)+", "+(-MarkerScale.z)+");"
 
 // style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vw; height:"+(60 + markerPosition.z*1.5).toString()+"vw; margin-left:"+(35+markerPosition.x*10).toString()+"%;margin-top:"+(19-(markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*10+"deg) rotateY("+MarkerRotation.y*10+"deg)  scale3d(1,1, 1);"
- style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vw; height:"+(60 + markerPosition.z*1.5).toString()+"vw; margin-left:"+(35+markerPosition.x*10).toString()+"%;margin-top:"+(5-(markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*1.5 +"deg) rotateY("+MarkerRotation.y*1.5 +"deg)  scale3d("+(MarkerScale.x)+", "+(MarkerScale.y)+", "+(MarkerScale.z)+");" // dulled down to something more simple, but it works like a realistic 2D plane in a 3D world now. It's more trusty than the tests above.
+ style: "z-index: 99999; width:"+(60 + (markerPosition.z*1.5)).toString()+"vw; height:"+(60 + markerPosition.z*1.5).toString()+"vw; margin-left:"+offsetH*(35+markerPosition.x*10).toString()+"%;margin-top:"+(5-(offsetV+markerPosition.y*3)).toString()+"%;position: absolute; will-change: transform; transform: perspective(300px) rotateX("+MarkerRotation.x*1.5 +"deg) rotateY("+MarkerRotation.y*1.5 +"deg)  scale3d("+(MarkerScale.x)+", "+(MarkerScale.y)+", "+(MarkerScale.z)+");" // dulled down to something more simple, but it works like a realistic 2D plane in a 3D world now. It's more trusty than the tests above.
 
 });
 }

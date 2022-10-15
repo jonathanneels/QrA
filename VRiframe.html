@@ -67,6 +67,18 @@ elmnt.remove();
  }); 
 }
 
+function removeRangeSliders()
+{
+ document.getElementById("iframeA").addEventListener("load", function() {
+ document.getElementById("iframeA").contentWindow.document.getElementById("rOffsetHorizontal").remove();
+  document.getElementById("iframeA").contentWindow.document.getElementById("rOffsetVertical").remove();
+});
+document.getElementById("iframeB").addEventListener("load", function() {
+ document.getElementById("iframeB").contentWindow.document.getElementById("rOffsetHorizontal").remove();
+  document.getElementById("iframeB").contentWindow.document.getElementById("rOffsetVertical").remove();
+});
+
+}
 function removeBorderFromFrames(isRemoveSubBorders,isRemoveFrameA)
 {
  document.getElementById("iframeA").addEventListener("load", function() {
@@ -174,6 +186,9 @@ if(isRemoveFrameA)
  }
  removeBorderFromFrames(true,isRemoveFrameA);
 hideBtnsInsideFrames();
+
+removeRangeSliders();
+
 });
 
 </script>
