@@ -22,29 +22,26 @@
 
     #loadingMessage {
       text-align: center;
-      padding: 40px;
+      padding: 5px;
       background-color: #eee;
     }
 
-    #canvas {
-      width: 100%;
-    }
-
+ 
     #output {
-      margin-top: 20px;
-      background: #eee;
-      padding: 10px;
+       background: #eee;
+      padding: 5px;
       padding-bottom: 0;
+	  height:70px;
     }
 
     #output div {
-      padding-bottom: 10px;
-      word-wrap: break-word;
+       word-wrap: break-word;
     }
 
     #noQRFound {
       text-align: center;
     }
+	#btnAction{    font-size: large;  background-color:orange; color:white;    text-align: center;width:100%; height: 50px;}
   </style>
 </head>
 <body>
@@ -52,14 +49,14 @@
 
   <div id="loadingMessage">🎥 Unable to access video stream (please make sure you have a webcam enabled)</div>
     <button type="button" onclick="actionHandler()" id="btnAction">Start!</button><br>
-<br>
-  <canvas id="canvas" ></canvas>
-  <div id="output" >
+	  <div id="output" >
     <div id="outputMessage">No QR-code detected.</div>
  <b>Data:</b>    <div style="overflow:auto;  height:100px;"> <span id="outputData" ></span></div>   </div>
+
+<br>
+  <canvas id="canvas" ></canvas>
  
-  </div>
- 
+  
   <script>
 
     var video = document.createElement("video");

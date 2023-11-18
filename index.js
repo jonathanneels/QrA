@@ -55,12 +55,29 @@ https.createServer(options, function (req, res) {
 
 var feedbackUrl = req.url;
    if (feedbackUrl.trim() === '/') { 
-        res.writeHead(200, {'Content-Type': 'text/html' , 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
-                          fs.createReadStream('iframe.html').pipe(res);//  fs.createReadStream('default_arjs_test.html').pipe(res); 
+       //  res.writeHead(200, {'Content-Type': 'text/html' , 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
+                   //       fs.createReadStream('iframe.html').pipe(res);//  fs.createReadStream('default_arjs_test.html').pipe(res); 
+						  
+						   	fs.readFile(__dirname + "/iframe.html", function (err,data) {     
+    res.writeHead(200);
+    res.end(data);
+  }); 
+
     }
+			else  if	(feedbackUrl.trim().startsWith('/combine') )   {
+  	fs.readFile(__dirname + "/QrAndQRACOMBINED.html", function (err,data) {     
+    res.writeHead(200);
+    res.end(data);
+  }); 
+}
 		else  if	(feedbackUrl.trim().startsWith('/read')  ||  feedbackUrl.trim() ==('/qr') )   {
-	   res.writeHead(200, {'Content-Type': 'text/html', 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
-              fs.createReadStream('readQrA.html').pipe(res)
+	   //res.writeHead(200, {'Content-Type': 'text/html', 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
+       //       fs.createReadStream('readQrA.html').pipe(res);
+ 	fs.readFile(__dirname + "/readQrA.html", function (err,data) {     
+    res.writeHead(200);
+    res.end(data);
+  }); 
+
 	}
 	else  if	(feedbackUrl.trim().startsWith('/iframe')  )   {
 	   res.writeHead(200, {'Content-Type': 'text/html', 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
@@ -75,7 +92,7 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
 	   res.writeHead(200, {'Content-Type': 'text/html', 'Accept-Ranges': 'bytes',  'Cache-Control': 'no-cache'});
               fs.createReadStream('VRiframe.html').pipe(res)
 	}
-	else if	(feedbackUrl.trim().startsWith('/qramaker') ) {
+	else if	(feedbackUrl.trim().startsWith('/qramaker') ||  feedbackUrl.trim().startsWith('/make')) {
  	fs.readFile(__dirname + "/static/QrA_Maker/index.html", function (err,data) {     
     res.writeHead(200);
     res.end(data);
@@ -143,9 +160,9 @@ else  if	(feedbackUrl.trim().startsWith('/vrframe')  )   {
 	      res.writeHead(404);
     res.end("Nothing to be found here...");
 
-    }
+    }else{
     res.writeHead(200);
-    res.end(data);
+    res.end(data);}
   });
   
   }

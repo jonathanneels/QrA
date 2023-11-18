@@ -84,6 +84,8 @@ margin-right: 8%;
 			/////Example custom URL: https://192.168.1.40:4444/iframe?https:///aikido-torhout.be|/static/scanables/pattern-Skarredghost_marker.patt   /// 
 			
 				var urlAr="https://jonathanneels.be";
+				var timeWithoutMatch = 0; 
+				
 				function loadArUrl()
 				{
  if(window.location.href.includes("?"))   
@@ -187,7 +189,7 @@ tracks.forEach(track => track.stop());
 	
 			var marker;
 						var markerVisible=false;
-						var aMarker=" <a-marker id='aMarker' preset='custom' type='pattern' url='/static/scanables/pattern-QrA.patt'>   </a-marker>"
+						var aMarker=" <a-marker id='aMarker' preset='custom' type='pattern' url='/static/scanables/pattern-TFV2_bw.patt'>   </a-marker>"
 						var aBox=  "<a-box  position='0 0.1 0' color='purple' material='opacity: 0.1;'></a-box>"
 
 function setMarker()
@@ -328,6 +330,14 @@ if((!window.fullScreen) &&  (window.innerWidth !== screen.width && window.innerH
          btnFScreen.style.display = "block";
 }
 
+if($("#iFrameSimulated").is(":hidden"))
+{
+timeWithoutMatch+=1; 
+
+}
+else{
+timeWithoutMatch=0;
+}
  
  }, 1000);
 
