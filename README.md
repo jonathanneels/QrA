@@ -37,7 +37,7 @@ If you like what I do you can visit https://jonathanneels.itch.io/pog8 make some
 
 
 Important Notice:
-This project has been in development for several years. It includes a subproject called "Augme," which uses the MindAR.js library to create augmented reality iframe (webpages) as the main project (QRA). 
+This project has been in development for several years. It includes a subproject called "Augme," which uses the MindAR.js library to create a augmented reality iframe (webpages), just as the main project (QRA). 
 Unlike traditional QR(A)-based AR projects, Augme uses complex images as AR references instead of classic QR(A) codes. This approach offers a more dynamic and complex AR experience.
 Please note that while the Augme subproject itself is not open source, its underlying code is. I encourage you to use it to create something unique!
 
