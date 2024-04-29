@@ -83,6 +83,8 @@ margin-right: 8%;
 			
 			/////Example custom URL: https://192.168.1.40:4444/iframe?https:///aikido-torhout.be|/static/scanables/pattern-Skarredghost_marker.patt   /// 
 			
+				var isSwitchAblePattern=false; //not functional yet
+				
 				var urlAr="https://jonathanneels.be";
 				var timeWithoutMatch = 0; 
 				
@@ -108,6 +110,16 @@ urlAr = window.location.href.split("?")[1];
 //{
 //urlAr = "https://"+urlAr
 //}
+    document.getElementById('iFrameSimulated').src = urlAr;
+
+   }
+   
+   else  if(window.location.href.includes("/Q"))  //database feedback
+{
+
+var urlAr = window.location.href.split("/Q")[1];
+
+ console.log(urlAr);
     document.getElementById('iFrameSimulated').src = urlAr;
 
    }
@@ -189,7 +201,7 @@ tracks.forEach(track => track.stop());
 	
 			var marker;
 						var markerVisible=false;
-						var aMarker=" <a-marker id='aMarker' preset='custom' type='pattern' url='/static/scanables/pattern-QrA.patt'>   </a-marker>"
+						var aMarker=" <a-marker id='aMarker' preset='custom' type='pattern' url='/static/scanables/pattern-circle.patt'>   </a-marker>"
 						var aBox=  "<a-box  position='0 0.1 0' color='purple' material='opacity: 0.1;'></a-box>"
 
 function setMarker()
@@ -227,7 +239,30 @@ getStream('video');
 			
 			loadArUrl();
 init();
-setInterval(function() {markerCheck();
+
+var switchMarkerCount = 10; 
+var switchCounter= 0; 
+var pattChangeIndex=0;
+setInterval(function() {
+
+					if(isSwitchAblePattern && switchCounter > switchMarkerCount && pattChangeIndex==0){//not functional yet
+   $(aMarker).remove();
+  $(aBox).remove();
+
+						  aMarker=" <a-marker id='aMarker' preset='custom' type='pattern' url='/static/scanables/pattern-TFV2_bw.patt'>   </a-marker>"
+						  aBox=  "<a-box id='aBox' position='0 0.1 0' color='purple' material='opacity: 0.1;'></a-box>"
+ 	setMarker();
+	switchCounter=0;
+	pattChangeIndex+=1;
+						console.log("pattern altered");
+
+} else{
+
+if(  isSwitchAblePattern && pattChangeIndex==0){
+switchCounter+=1; 
+if(switchCounter >100){switchCounter=0;}}
+
+markerCheck();
 
 //console.log( markerVisible);
 //console.log( marker.object3D.position);
@@ -241,7 +276,7 @@ iFrame3DActions(markerVisible, marker.object3D.position,marker.object3D.scale,ma
             var resizeEvent = window.document.createEvent('UIEvents');
             resizeEvent.initUIEvent('resize', true, false, window, 0);
             window.dispatchEvent(resizeEvent);
-
+}
 
 }, 100);
 });

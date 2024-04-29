@@ -18,5 +18,8 @@
     "heroku"
   ],
   "author": "Jonathan F.M. Neels",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "lokijs": "^1.5.12"
+  }
 }
