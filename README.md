@@ -22,17 +22,21 @@ The VR version [very experimental!] is  HTTPS://127.0.0.1:4444/vrqramaker
 
 
 Note:
+
 If you look in the iframe.html file you'll see wild - outcommented - positional transformations when showing a site from an angle. I've purposely dampen the angle calculations to make a simple, realistic AR websurfing experience. 
 That does not mean you can tinker with the file to generate rollercoaster-like effects! 
 
 
 
 PS: 
+
 If you make your own QrA links, I suggest using an URL shortener like https://tinyurl
 QrA homepage: https://qr-a.herokuapp.com  QrA-link on home: https://tinyurl
 
 PS 2:
+
 If you like what I do you can visit https://jonathanneels.itch.io/pog8 make some noise and maybe buy me a beer.
+
 
 
 Important Notice:
