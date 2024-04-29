@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>doorbell ringer</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+<style>
+html { height: 100%; }
+body { min-height: 100%; margin: 0; display: flex; justify-content: center; align-items: center; }
+button { 
+  border-radius: 50%; 
+  width: 200px;
+  height: 200px;
+  border: none;
+  color: white;
+  font-family: Avenir, Arial, sans-serif;
+  font-weight: 900;
+  font-size: 2.5rem;
+  background: red;
+  text-shadow: 0 3px 1px rgba(122,17,8,.8);
+  box-shadow: 0 8px 0 rgb(183,9,0), 
+    0 15px 20px rgba(0,0,0,.35);
+  text-transform: uppercase;
+  transition: .4s all ease-in;
+  outline: none; 
+  cursor: pointer;
+  text-align: center;
+  -webkit-user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+button span { position: relative; }
+/* fix for IE 11 (and IE8+, although the earlier versions are harder to address) stupidly moving the inner button text on click */
+.pressed { 
+  padding-top: 3px;
+  transform: translateY(4px);
+  box-shadow: 0 4px 0 rgb(183,0,0),
+    0 8px 6px rgba(0,0,0,.45);
+}
+          button {
+             font-size: 150px;
+         }
+
+</style>
+</head>
+<body>
+
+<button id="everybodydance"><span>🕭</span></button>
+<script>
+ var isClicked= false;
+
+var contextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);//REF: https://codepen.io/dudleystorey/pen/LYyrdO
+var dance = document.getElementById("everybodydance");
+if (contextClass) {
+  var context = new contextClass();
+} else {
+  onError;
+}
+var request = new XMLHttpRequest();
+request.open('GET', "gonna-make-you-sweat.mp3", true);
+request.responseType = 'arraybuffer';
+request.onload = function() {
+ context.decodeAudioData(request.response, function(theBuffer) {
+  buffer = theBuffer;
+  }, onError);
+}
+request.send();
+
+function onError() { console.log("Bad browser! No Web Audio API for you"); }
+
+function unpress() { dance.classList.remove("pressed"); }
+
+function playSound() {
+ dance.classList.add("pressed");
+  var source = context.createBufferSource();
+  source.buffer = buffer;
+ source.connect(context.destination);
+  source.start(0);
+  var delay = 2000;
+  setTimeout(unpress,delay);
+}
+function pressBell(){
+const xhr = new XMLHttpRequest();
+xhr.open("GET", "/memohome2|ring");
+xhr.send();
+xhr.responseType = "text";
+xhr.onload = () => {
+  if (xhr.readyState == 4 && xhr.status == 200) {
+    console.log(xhr.response);
+  } else {
+    console.log(`Error: ${xhr.status}`);
+  }
+};
+}
+
+dance.addEventListener('click', function(event) { 
+if(!isClicked){
+isClicked=true;
+setTimeout(() => {isClicked=false;  }, 5000,isClicked);
+
+pressBell();
+playSound();}
+
+ });
+
+
+</script>
+</body>
+</html>
