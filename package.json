@@ -2,9 +2,9 @@
   "name": "QrA",
   "version": "0.2.0",
   "description": "Augmented Reality for showing websites. Use a classic AR.js marker or a combined one (QrA) desigend for this project.",
-  "main": "index_WEBVERSION_MODERN.js",
+  "main": "index_web_modern.js",
   "scripts": {
-    "start": "index_WEBVERSION_MODERN.js"
+    "start": "index_web_modern.js"
   },
   "engines": {
     "node": "14.1.0"
